@@ -1,0 +1,17 @@
+# EssentialsPro Configuration. For more info visit http://adf.ly/15548249/configyml
+
+Prefix: "&7[&1EP&7]&r"
+
+Deathmessages:
+   enable: true
+   entity: "&c%player% has been slaughtered."
+   explosion: "&c%player% got blown up."
+   lightning: "&c%player%has been smited."
+   drowning: "&c%player% is now swimming with the fishes."
+   falling: "&c%player% found out what gravity is."
+   fire: "&c%player% has been cooked to a crisp."
+   starvation: "&c%player% coulden't find food."
+   contact: "&c%player% became a cactus."
+   projectile: "&c%player% has been slaughtered."
+   void: "&c%player% has been lost forever."
+   

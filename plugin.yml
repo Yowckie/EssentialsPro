@@ -1,0 +1,353 @@
+name: EssentialsPro
+author: TheDoffman
+main: me.thedoffman.essentialspro.main.Main
+version: 1.3
+description: Everything you need to run your server.
+
+commands:
+   
+  heal:
+   aliases: [healme, healer, h]
+   description: Heal yourself.
+   permission: ep.heal
+   
+  essentialspro:
+   aliases: [ep]
+   description: Shows menu.
+   
+  clearchat:
+   aliases: [cc, cclear, clear]
+   description: Clear the chat.
+   permission: ep.clearchat
+   
+  feed:
+   aliases: [feedme]
+   description: feeds you.
+   permission: ep.feed
+  
+  teleport:
+   aliases: [tp]
+   description: Teleport to another player.
+   permission: ep.tp
+   
+  tpc:
+     description: Teleport to a spicific location
+     usage: /tpc <x> <y> <z>
+
+  gamemode:
+   aliases: [gm]
+   description: Change Gamemode.
+   permission: ep.gamemode
+   
+  setspawn:
+   aliases: [sspawn]
+   description: Set the spawn.
+   permission: ep.setspawn
+   
+  spawn:
+   aliases: [spawn]
+   description: Go to spawn.
+   
+  staffchat:
+   aliases: [sc]
+   description: Sends a staffchat msg.
+   permission: ep.staffchat
+   
+  motd:
+   description: Shows current MOTD.
+   permission: ep.motd
+  
+  setmotd:
+   description: Set MOTD.
+   permission: ep.motdset
+   
+  setwarp:
+    description: Set a warp location.
+    permission: ep.setwarp
+    
+  warp:
+    description: Teleport to a selected warp.
+    permission: ep.warp
+      
+  warplist:
+    description: Shows a list of current warps.
+    permission: ep.warplist
+    
+  delwarp:
+    description: Removes the specified warp.
+    permission: ep.delwarp
+  
+  nickname:
+    aliases: [nick]
+    description: Change the nickname of yourself.
+    permission: ep.nick.use
+  
+  time:
+    description: Allows a player to set the time in the server.
+    permission: ep.time
+  
+  weather:
+    permission: ep.weather
+    descritpion: Allows a player to change the weather.
+    
+  broadcast:
+    permission: ep.broadcast
+    descritpion: Allows a player brodcast a global msg.
+    
+  kick:
+    description: Kicks a player from the server.
+    permission: ep.kick
+  
+  ban:
+    description: Bans a player from the server.
+    permission: ep.ban
+    
+  unban:
+    description: Unbans a player from the server.
+    permission: ep.ban
+  
+  mute:
+    description: Prevents a player from seeing chat and talking.
+    permission: ep.mute
+   
+  unmute:
+    description: Prevents a player from seeing chat and talking.
+    permission: ep.mute
+    
+  fly:
+    description: Enables flying for a player.
+    permission: ep.fly
+    
+  ci:
+    description: Clears players inventory.
+    permission: ep.ci
+    
+  invsee:
+    description: Look into a players inventory.
+    permission: ep.invsee
+
+  vanish:
+    description: Hides you in plain sight.
+    permission: ep.vanish
+    aliases: [v]
+    
+  home:
+    description: Sends you home.
+    permission: ep.home
+    aliases: [h]
+    
+  sethome:
+    description: Sets a home location.
+    permission: ep.home
+    aliases: [h]
+    
+  delhome:
+    description: Removes a home location.
+    permission: ep.home
+    aliases: [h]
+    
+  sethome:
+    description: Sets yur current loacation as home.
+    permission: ep.sethome
+    
+  pm:
+    description: Private message a player.
+    permission: ep.privatemessage
+    
+permissions:
+<<<<<<< HEAD
+  
+  ep.ban:
+    default: op
+    description: Allows a player to ban.
+    
+  ep.unban:
+    default: op
+    description: Allows a player to unban.
+    
+  ep.broadcast:
+    default: op
+    description: Allows a player to broadcast a message.
+    
+  ep.clearchat:
+    default: op
+    description: Allows a player to clearchat.
+    
+  ep.clearinventory:
+    default: op
+    description: Allows a player to clear their inventory or someone elses.
+    
+  ep.feed:
+    default: op
+    description: Feed someone or yourself.
+    
+  ep.gamemode:
+    default: op
+    description: Allows you to change your gamemode.
+    
+  ep.fly:
+    default: op
+    description: You do not have permission to use that command!
+    
+  ep.heal:
+    default: op
+    description: Allows you to fly.
+    
+  ep.home:
+    default: op
+    description: Go home.
+    
+  ep.sethome:
+    default: op
+    description: Set a home location.
+    
+  ep.deletehome:
+    default: op
+    description: Remove a home location.
+    
+  ep.invsee:
+    default: op
+    description: See someones inventory.
+    
+  ep.kick:
+    default: op
+    description: Kick a player out of the server.
+    
+  ep.setmotd:
+    default: op
+    description: Set the server menu Message of the Day.
+    
+  ep.motd:
+    default: op
+    description: See the server menu Message of the Day.
+    
+  ep.mute:
+    default: op
+    description: Mute a player.
+    
+  ep.unmute:
+    default: op
+    description: unmute a player.
+    
+=======
+>>>>>>> parent of 0de8517... Permission Fix
+  ep.nickname.use:
+    default: true
+    description: Allows The Use Of /Nickname.
+  ep.nickname.others:
+    default: op
+    description: Allows Nicknaming Other Players.
+  ep.nickname.color:
+    default: op
+<<<<<<< HEAD
+    description: Allows The use of color Codes In Nicknames.
+    
+  ep.pm:
+    default: op
+    description: Private message someone.
+    
+  ep.setspawn:
+    default: op
+    description: Set the spawn location for the server.
+    
+  ep.spawn:
+    default: true
+    description: Go to the spawn loaction for the server.
+    
+  ep.staffchat:
+    default: op
+    description: Read a private chat between staff.
+    
+  ep.teleport:
+    default: op
+    description: Teleport to other players.
+    
+  ep.time:
+    default: op
+    description: Change the time of the server.
+    
+  ep.epc:
+    default: op
+    description: You do not have permission to use that command!
+    
+  ep.vanish:
+    default: op
+    description: Go invisable.
+    
+  ep.warp:
+    default: op
+    description: Use the server warps.
+    
+  ep.setwarp:
+    default: op
+    description: Set a server warp.
+    
+  ep.deletewarp:
+    default: op
+    description: Remove a server warp.
+    
+  ep.warplist:
+    default: op
+    description: See a list of warps.
+    
+  ep.weather:
+    default: op
+    description: Change the weather
+  
+  ep.chat.color:
+    default: op
+    description: Allows The use of color Codes In Chat.
+  
+  ep.sign.color:
+    default: op
+    description: Allows the use of color codes on signs.
+  
+  ep.sign.feed:
+    default: op
+    description: Allows The creation of Feed signs.
+    
+  ep.sign.feed.use:
+    default: op
+    description: Allows The use of Feed signs.
+  
+  ep.sign.heal:
+    default: op
+    description: Allows The creation of heal signs.
+    
+  ep.sign.heal.use:
+    default: op
+    description: Allows The use of heal signs.
+    
+  ep.sign.spawn:
+    default: op
+    description: Allows The creation of spawn signs.
+    
+  ep.sign.spawn.use:
+    default: op
+    description: Allows The use of spawn signs.
+  
+  ep.sign.time:
+    default: op
+    description: Allows The creation of time signs.
+  
+  ep.sign.time.use:
+    default: op
+    description: Allows the use of time signs.
+    
+  ep.sign.warp:
+    default: op
+    description: Allows The creation of warp signs.
+  
+  ep.sign.warp.use:
+    default: op
+    description: Allows the use of warp signs.
+    
+  ep.join.full:
+    default: op
+    description: Allows you to join the server even when full.
+=======
+    description: Allows The Use Of Colour Codes In Nicknames.
+  ep.chat.color:
+    default: op
+    description: Allows The Use Of Color Codes In Chat.
+>>>>>>> parent of 0de8517... Permission Fix
