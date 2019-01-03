@@ -18,7 +18,7 @@ public class Teleport implements CommandExecutor {
     }
 
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can teleport!");

@@ -20,7 +20,7 @@ public class Ban implements CommandExecutor {
     
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (label.equalsIgnoreCase("ban")) {
             if (args.length == 0) {
                 sender.sendMessage(plugin.prefix + ChatColor.RED +"Please specify a player and reason!");

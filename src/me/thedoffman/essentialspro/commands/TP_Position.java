@@ -19,7 +19,7 @@ public class TP_Position implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] arg) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
         Player player = (Player) sender;
  

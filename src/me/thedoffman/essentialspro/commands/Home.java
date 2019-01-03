@@ -22,7 +22,7 @@ public class Home implements CommandExecutor {
     }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){   	
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
         Player p = (Player) sender;
         
         if (cmd.getName().equalsIgnoreCase("home")) {

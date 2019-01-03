@@ -19,7 +19,7 @@ public class PrivateMessage implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
         //Check command
         if (cmd.getName().equalsIgnoreCase("pm"))
         {

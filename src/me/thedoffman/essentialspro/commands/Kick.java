@@ -19,7 +19,7 @@ public class Kick implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 
         if (label.equalsIgnoreCase("kick")) {
             if (args.length == 0) {

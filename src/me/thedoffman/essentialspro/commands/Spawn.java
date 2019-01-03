@@ -18,7 +18,7 @@ public class Spawn implements CommandExecutor {
     }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
             if (cmd.getName().equalsIgnoreCase("spawn")) {
                 if (!(sender instanceof Player)) {
@@ -31,14 +31,14 @@ public class Spawn implements CommandExecutor {
                 if (p.getWorld().getSpawnLocation() == null) {
                 	
                 	String NS = plugin.getlang().getString("Messages.NoSpawn");
-                    NS = NS.replaceAll("&", "\u00A7");
+                    NS = NS.replaceAll("&", "§");
                     
                         p.sendMessage(plugin.prefix + NS);
                         return false;
                 }
                 
                 String WS = plugin.getlang().getString("Messages.WelcomeSpawn");
-                WS = WS.replaceAll("&", "\u00A7");
+                WS = WS.replaceAll("&", "§");
                 
                 p.teleport(p.getWorld().getSpawnLocation());
                 p.sendMessage(plugin.prefix + WS);

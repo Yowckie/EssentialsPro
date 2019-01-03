@@ -20,7 +20,7 @@ public class SetSpawn implements CommandExecutor{
     }
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
     if (cmd.getName().equalsIgnoreCase("setspawn")) {
         if (!(sender instanceof Player)) {
@@ -32,7 +32,7 @@ public class SetSpawn implements CommandExecutor{
         if (sender instanceof Player) {
         	
             String Spawn = plugin.getlang().getString("Messages.SpawnSet");
-            Spawn = Spawn.replaceAll("&", "\u00A7");
+            Spawn = Spawn.replaceAll("&", "§");
             
         	Player p = (Player) sender;	
         	World world = p.getWorld();

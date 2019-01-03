@@ -18,12 +18,12 @@ public class WarpList implements CommandExecutor {
     }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
 		if (cmd.getName().equalsIgnoreCase("warplist")) {
 			
 			String CE = plugin.getlang().getString("Messages.ConsoleE");
-            CE = CE.replaceAll("&", "\u00A7");
+            CE = CE.replaceAll("&", "§");
             
 			if (sender instanceof Player) {
 				Player p = (Player) sender; 

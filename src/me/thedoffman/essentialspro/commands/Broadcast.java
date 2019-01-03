@@ -19,7 +19,7 @@ public class Broadcast implements CommandExecutor {
     }
     
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
 		if (cmd.getName().equalsIgnoreCase("broadcast") && sender instanceof Player) {
 			

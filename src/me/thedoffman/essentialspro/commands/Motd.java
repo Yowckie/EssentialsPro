@@ -26,7 +26,7 @@ public class Motd implements CommandExecutor, Listener {
     @EventHandler
     public void onServerPing(ServerListPingEvent e) {
         String motd = plugin.getlang().getString("Messages.MOTD");
-        motd = motd.replaceAll("&", "\u00A7");
+        motd = motd.replaceAll("&", "§");
             e.setMotd(motd);
     }
 
@@ -35,7 +35,7 @@ public class Motd implements CommandExecutor, Listener {
 		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
     	
         String motdA = plugin.getlang().getString("Messages.Access");
-        motdA = motdA.replaceAll("&", "\u00A7");
+        motdA = motdA.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("motd")) {
                 if (!sender.hasPermission("ep.motd")) {
                         sender.sendMessage(plugin.prefix + motdA);

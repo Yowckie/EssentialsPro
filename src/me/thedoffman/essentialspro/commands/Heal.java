@@ -20,7 +20,7 @@ public class Heal implements CommandExecutor {
 	
 	@SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 			
 		Player target;
 		if ( cmd.getName().equalsIgnoreCase("heal")){
@@ -49,10 +49,10 @@ public class Heal implements CommandExecutor {
 				target.setHealth(target.getMaxHealth());
 				
 				String HS = plugin.getlang().getString(plugin.prefix +  "Messages.HealS").replaceAll("%targetplayer%", target.getName().toLowerCase());
-		        HS = HS.replaceAll("&", "\u00A7");
+		        HS = HS.replaceAll("&", "§");
 		        
 		        String HT = plugin.getlang().getString(plugin.prefix +  "Messages.HealT").replaceAll("%senderplayer%", sender.getName().toLowerCase());
-		        HT = HT.replaceAll("&", "\u00A7");
+		        HT = HT.replaceAll("&", "§");
 		        
 				sender.sendMessage(plugin.prefix +  HS);
 				target.sendMessage(plugin.prefix +  HT);

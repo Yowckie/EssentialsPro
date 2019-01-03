@@ -18,7 +18,7 @@ public class Time implements CommandExecutor {
     }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
 		if (cmd.getName().equalsIgnoreCase("time"))
 			if(sender instanceof Player){

@@ -19,7 +19,7 @@ public class Mute implements CommandExecutor {
     }
 	
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
+		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 
         if (label.equalsIgnoreCase("mute")) {
             if (args.length == 0) {

@@ -155,7 +155,6 @@ commands:
     permission: ep.privatemessage
     
 permissions:
-<<<<<<< HEAD
   
   ep.ban:
     default: op
@@ -228,9 +227,7 @@ permissions:
   ep.unmute:
     default: op
     description: unmute a player.
-    
-=======
->>>>>>> parent of 0de8517... Permission Fix
+
   ep.nickname.use:
     default: true
     description: Allows The Use Of /Nickname.
@@ -239,7 +236,6 @@ permissions:
     description: Allows Nicknaming Other Players.
   ep.nickname.color:
     default: op
-<<<<<<< HEAD
     description: Allows The use of color Codes In Nicknames.
     
   ep.pm:
@@ -345,9 +341,7 @@ permissions:
   ep.join.full:
     default: op
     description: Allows you to join the server even when full.
-=======
-    description: Allows The Use Of Colour Codes In Nicknames.
+    
   ep.chat.color:
     default: op
     description: Allows The Use Of Color Codes In Chat.
->>>>>>> parent of 0de8517... Permission Fix
