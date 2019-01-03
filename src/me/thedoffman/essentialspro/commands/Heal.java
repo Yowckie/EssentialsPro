@@ -1,6 +1,7 @@
 package me.thedoffman.essentialspro.commands;
 
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -47,15 +48,9 @@ public class Heal implements CommandExecutor {
 				}
 				
 				target.setHealth(target.getMaxHealth());
-				
-				String HS = plugin.getlang().getString(plugin.prefix +  "Messages.HealS").replaceAll("%targetplayer%", target.getName().toLowerCase());
-		        HS = HS.replaceAll("&", "§");
 		        
-		        String HT = plugin.getlang().getString(plugin.prefix +  "Messages.HealT").replaceAll("%senderplayer%", sender.getName().toLowerCase());
-		        HT = HT.replaceAll("&", "§");
-		        
-				sender.sendMessage(plugin.prefix +  HS);
-				target.sendMessage(plugin.prefix +  HT);
+				sender.sendMessage(plugin.prefix +  ChatColor.BLUE + "You have healed " + ChatColor.GREEN + target.getName() + ChatColor.BLUE + ".");
+				target.sendMessage(plugin.prefix +  ChatColor.BLUE + "You have been healed by " + ChatColor.GREEN + sender.getName() + ChatColor.BLUE + ".");
 		
 		return true;
 	}
