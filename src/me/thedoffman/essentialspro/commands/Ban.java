@@ -22,6 +22,10 @@ public class Ban implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (label.equalsIgnoreCase("ban")) {
+            if (!sender.hasPermission("ep.ban")) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use that command!");
+                return true;
+              }
             if (args.length == 0) {
                 sender.sendMessage(plugin.prefix + ChatColor.RED +"Please specify a player and reason!");
             } else if (args.length == 1) {

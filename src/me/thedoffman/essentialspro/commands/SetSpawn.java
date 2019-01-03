@@ -23,6 +23,10 @@ public class SetSpawn implements CommandExecutor{
 		plugin.prefix = plugin.prefix.replaceAll("&", "§");
 		
     if (cmd.getName().equalsIgnoreCase("setspawn")) {
+        if (!sender.hasPermission("ep.setspawn")) {
+            sender.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use that command!");
+            return true;
+          }
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set spawn!");
             return true;

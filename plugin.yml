@@ -9,7 +9,6 @@ commands:
   heal:
    aliases: [healme, healer, h]
    description: Heal yourself.
-   permission: ep.heal
    
   essentialspro:
    aliases: [ep]
@@ -18,17 +17,14 @@ commands:
   clearchat:
    aliases: [cc, cclear, clear]
    description: Clear the chat.
-   permission: ep.clearchat
    
   feed:
    aliases: [feedme]
    description: feeds you.
-   permission: ep.feed
   
   teleport:
    aliases: [tp]
    description: Teleport to another player.
-   permission: ep.tp
    
   tpc:
      description: Teleport to a spicific location
@@ -37,12 +33,10 @@ commands:
   gamemode:
    aliases: [gm]
    description: Change Gamemode.
-   permission: ep.gamemode
    
   setspawn:
    aliases: [sspawn]
    description: Set the spawn.
-   permission: ep.setspawn
    
   spawn:
    aliases: [spawn]
@@ -51,108 +45,83 @@ commands:
   staffchat:
    aliases: [sc]
    description: Sends a staffchat msg.
-   permission: ep.staffchat
    
   motd:
    description: Shows current MOTD.
-   permission: ep.motd
   
   setmotd:
    description: Set MOTD.
-   permission: ep.motdset
    
   setwarp:
     description: Set a warp location.
-    permission: ep.setwarp
     
   warp:
     description: Teleport to a selected warp.
-    permission: ep.warp
       
   warplist:
     description: Shows a list of current warps.
-    permission: ep.warplist
     
   delwarp:
     description: Removes the specified warp.
-    permission: ep.delwarp
   
   nickname:
     aliases: [nick]
     description: Change the nickname of yourself.
-    permission: ep.nick.use
   
   time:
     description: Allows a player to set the time in the server.
-    permission: ep.time
   
   weather:
-    permission: ep.weather
     descritpion: Allows a player to change the weather.
     
   broadcast:
-    permission: ep.broadcast
     descritpion: Allows a player brodcast a global msg.
     
   kick:
     description: Kicks a player from the server.
-    permission: ep.kick
   
   ban:
     description: Bans a player from the server.
-    permission: ep.ban
     
   unban:
     description: Unbans a player from the server.
-    permission: ep.ban
   
   mute:
     description: Prevents a player from seeing chat and talking.
-    permission: ep.mute
    
   unmute:
     description: Prevents a player from seeing chat and talking.
-    permission: ep.mute
     
   fly:
     description: Enables flying for a player.
-    permission: ep.fly
     
   ci:
     description: Clears players inventory.
-    permission: ep.ci
     
   invsee:
     description: Look into a players inventory.
-    permission: ep.invsee
 
   vanish:
     description: Hides you in plain sight.
-    permission: ep.vanish
     aliases: [v]
     
   home:
     description: Sends you home.
-    permission: ep.home
     aliases: [h]
     
   sethome:
     description: Sets a home location.
-    permission: ep.home
     aliases: [h]
     
   delhome:
     description: Removes a home location.
-    permission: ep.home
     aliases: [h]
     
   sethome:
     description: Sets yur current loacation as home.
-    permission: ep.sethome
     
   pm:
     description: Private message a player.
-    permission: ep.privatemessage
     
 permissions:
   
@@ -231,9 +200,11 @@ permissions:
   ep.nickname.use:
     default: true
     description: Allows The Use Of /Nickname.
+  
   ep.nickname.others:
     default: op
     description: Allows Nicknaming Other Players.
+  
   ep.nickname.color:
     default: op
     description: Allows The use of color Codes In Nicknames.

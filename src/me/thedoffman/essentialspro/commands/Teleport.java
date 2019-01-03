@@ -28,6 +28,10 @@ public class Teleport implements CommandExecutor {
         Player p = (Player) sender;
        
         if (cmd.getName().equalsIgnoreCase("teleport")) {
+            if (!sender.hasPermission("ep.teleport")) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use that command!");
+                return true;
+              }
             if (sender instanceof Player) {
                 if (args.length == 0) {
                         p.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player.");
