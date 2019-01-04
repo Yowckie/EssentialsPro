@@ -25,8 +25,8 @@ implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /feed <Name>");
             if (args.length == 0 && !(sender instanceof Player)) {
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /feed <Name>");
                 return true;
             }
         }
