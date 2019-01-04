@@ -21,7 +21,7 @@ public class QuitEvent implements Listener {
 		String player = e.getPlayer().getName().toString();
 		
         String leave = plugin.getlang().getString("Messages.LeaveIG").replaceAll("%player%", player);
-        leave = leave.replaceAll("&", "§");
+        leave = leave.replaceAll("&", "\u00A7");
         
 		
 		e.setQuitMessage(leave);

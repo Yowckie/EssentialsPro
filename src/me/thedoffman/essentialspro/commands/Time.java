@@ -17,7 +17,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("time") && !sender.hasPermission("ep.time")) {
             sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
             return true;

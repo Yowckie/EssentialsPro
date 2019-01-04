@@ -26,7 +26,7 @@ Listener {
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "You cannot vanish!");
             return true;

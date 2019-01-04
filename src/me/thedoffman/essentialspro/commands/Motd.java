@@ -24,14 +24,14 @@ Listener {
     @EventHandler
     public void onServerPing(ServerListPingEvent e) {
         String motd = plugin.getlang().getString("Messages.MOTD");
-        motd = motd.replaceAll("&", "§");
+        motd = motd.replaceAll("&", "\u00A7");
         e.setMotd(motd);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         String motdA = plugin.getlang().getString("Messages.Access");
-        motdA = motdA.replaceAll("&", "§");
+        motdA = motdA.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("motd")) {
             if (!sender.hasPermission("ep.motd")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
@@ -42,7 +42,7 @@ Listener {
                 return true;
             }
             String system = plugin.getlang().getString("Messages.MOTD");
-            system = system.replaceAll("&", "§");
+            system = system.replaceAll("&", "\u00A7");
             sender.sendMessage(plugin.prefix + ChatColor.GREEN + "MOTD: " + system);
             return true;
         }
@@ -72,7 +72,7 @@ Listener {
             String motd = str.toString();
             plugin.getlang().set("Messages.MOTD", (Object)motd);
             String system = plugin.getlang().getString("Messages.MOTD");
-            system = system.replaceAll("&", "§");
+            system = system.replaceAll("&", "\u00A7");
             sender.sendMessage(plugin.prefix + ChatColor.GREEN + "MOTD: " + system);
             plugin.saveYamls();
             return true;

@@ -21,8 +21,8 @@ public class TimeSignEvent implements Listener {
         public void onSignChangeDay(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singtime")){
                 if (e.getLine(0).equalsIgnoreCase("[Time]") && e.getLine(1).equalsIgnoreCase("Day")) {
-                        	e.setLine(0, "§9[Time]");
-                        	e.setLine(1, "§aDay");
+                        	e.setLine(0, "[Time]");
+                        	e.setLine(1, "Day");
                         	e.getPlayer().sendMessage(ChatColor.BLUE + "Sign created for time " + ChatColor.GREEN + "DAY" + ChatColor.BLUE + "!");
                 }
         	}
@@ -33,7 +33,7 @@ public class TimeSignEvent implements Listener {
                 if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
                 if (e.getClickedBlock().getState() instanceof Sign) {
                         Sign s = (Sign) e.getClickedBlock().getState();
-                        if (s.getLine(1).equalsIgnoreCase("§aDay")) {
+                        if (s.getLine(1).equalsIgnoreCase("Day")) {
                                 e.getPlayer().getWorld().setTime(0);
                                 e.getPlayer().sendMessage(ChatColor.GREEN + "Time set to Day!");
                         }
@@ -45,8 +45,8 @@ public class TimeSignEvent implements Listener {
         public void onSignChangeNight(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singtime")){
                 if (e.getLine(0).equalsIgnoreCase("[Time]") && e.getLine(1).equalsIgnoreCase("Night")) {
-                        	e.setLine(0, "§9[Time]");
-                        	e.setLine(1, "§aNight");
+                        	e.setLine(0, "[Time]");
+                        	e.setLine(1, "Night");
                         	e.getPlayer().sendMessage(ChatColor.BLUE + "Sign created for time " + ChatColor.GREEN + "NIGHT" + ChatColor.BLUE + "!");
                 }
         	}
@@ -57,7 +57,7 @@ public class TimeSignEvent implements Listener {
                 if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
                 if (e.getClickedBlock().getState() instanceof Sign) {
                         Sign s = (Sign) e.getClickedBlock().getState();
-                        if (s.getLine(1).equalsIgnoreCase("Â§aNight")) {
+                        if (s.getLine(1).equalsIgnoreCase("Night")) {
                                 e.getPlayer().getWorld().setTime(14000);
                                 e.getPlayer().sendMessage(ChatColor.GREEN + "Time set to Night!");
                         }
@@ -69,8 +69,8 @@ public class TimeSignEvent implements Listener {
         public void onSignChangeNoon(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singtime")){
                 if (e.getLine(0).equalsIgnoreCase("[Time]") && e.getLine(1).equalsIgnoreCase("Noon")) {
-                        	e.setLine(0, "Â§9[Time]");
-                        	e.setLine(1, "Â§aNoon");
+                        	e.setLine(0, "[Time]");
+                        	e.setLine(1, "Noon");
                         	e.getPlayer().sendMessage(ChatColor.BLUE + "Sign created for time " + ChatColor.GREEN + "NOON" + ChatColor.BLUE + "!");
                 }
         	}
@@ -81,7 +81,7 @@ public class TimeSignEvent implements Listener {
                 if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
                 if (e.getClickedBlock().getState() instanceof Sign) {
                         Sign s = (Sign) e.getClickedBlock().getState();
-                        if (s.getLine(1).equalsIgnoreCase("Â§aNoon")) {
+                        if (s.getLine(1).equalsIgnoreCase("Noon")) {
                                 e.getPlayer().getWorld().setTime(6000);
                                 e.getPlayer().sendMessage(ChatColor.GREEN + "Time set to Noon!");
                         }

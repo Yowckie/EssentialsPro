@@ -21,7 +21,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("warp")) {
             if (!sender.hasPermission("ep.warp")) {
@@ -40,7 +40,9 @@ implements CommandExecutor {
             double x = plugin.getwarps().getDouble("warps." + args[0] + ".x");
             double y = plugin.getwarps().getDouble("warps." + args[0] + ".y");
             double z = plugin.getwarps().getDouble("warps." + args[0] + ".z");
-            p.teleport(new Location(w, x, y, z));
+            float yaw = plugin.getplayers().getInt(p.getName() + "warps." + args[0] + ".yaw");
+            float pitch = plugin.getplayers().getInt(p.getName() + "warps." + args[0] + ".pitch");
+            p.teleport(new Location(w, x, y, z, yaw, pitch));
             p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
         }
         if (cmd.getName().equalsIgnoreCase("setwarp")) {
@@ -56,6 +58,8 @@ implements CommandExecutor {
             plugin.getwarps().set("warps." + args[0] + ".x", p.getLocation().getX());
             plugin.getwarps().set("warps." + args[0] + ".y", p.getLocation().getY());
             plugin.getwarps().set("warps." + args[0] + ".z", p.getLocation().getZ());
+            plugin.getplayers().set((p.getName()) + "warps." + args[0] + ".yaw", p.getLocation().getYaw());
+            plugin.getplayers().set((p.getName()) + "warps." + args[0] + ".pitch", p.getLocation().getPitch());
             plugin.saveYamls();
             p.sendMessage(plugin.prefix + ChatColor.GREEN + "Warp " + args[0] + " set!");
         }

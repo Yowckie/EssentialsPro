@@ -21,7 +21,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("home")) {
             if (!sender.hasPermission("ep.home")) {
@@ -44,7 +44,9 @@ implements CommandExecutor {
             double x = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".x");
             double y = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".y");
             double z = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".z");
-            p.teleport(new Location(w, x, y, z));
+            float yaw = plugin.getplayers().getInt(p.getName() + ".homes." + args[0] + ".yaw");
+            float pitch = plugin.getplayers().getInt(p.getName() + ".homes." + args[0] + ".pitch");
+            p.teleport(new Location(w, x, y, z, yaw, pitch));
             p.sendMessage(plugin.prefix + ChatColor.BLUE + "Welcome to " + ChatColor.GREEN + args[0] + ChatColor.BLUE + "!");
         }
         if (cmd.getName().equalsIgnoreCase("sethome")) {
@@ -64,6 +66,8 @@ implements CommandExecutor {
             plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".x", p.getLocation().getX());
             plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".y", p.getLocation().getY());
             plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".z", p.getLocation().getZ());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".yaw", p.getLocation().getYaw());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".pitch", p.getLocation().getPitch());
             plugin.saveYamls();
             p.sendMessage(plugin.prefix + ChatColor.BLUE + "Home " + ChatColor.GREEN + args[0] + ChatColor.BLUE + " set!");
         }

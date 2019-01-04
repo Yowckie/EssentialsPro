@@ -17,7 +17,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        Broadcast.plugin.prefix = Broadcast.plugin.prefix.replaceAll("&", "§");
+        Broadcast.plugin.prefix = Broadcast.plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("broadcast") && sender instanceof Player) {
             if (!sender.hasPermission("ep.broadcast")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");

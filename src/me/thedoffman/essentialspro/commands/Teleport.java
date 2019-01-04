@@ -17,7 +17,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can teleport!");
             return true;

@@ -18,7 +18,7 @@ implements CommandExecutor {
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "\u00A7");
         if (label.equalsIgnoreCase("ban")) {
             if (!sender.hasPermission("ep.ban")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");

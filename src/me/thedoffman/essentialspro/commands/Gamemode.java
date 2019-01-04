@@ -18,7 +18,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("gamemode") && !sender.hasPermission("ep.gamemode")) {
             sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
             return true;

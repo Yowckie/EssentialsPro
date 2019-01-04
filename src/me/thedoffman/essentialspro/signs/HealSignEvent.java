@@ -21,9 +21,9 @@ public class HealSignEvent implements Listener {
         public void onSignChange(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singheal")){
                 if (e.getLine(0).equalsIgnoreCase("[Heal]")) {
-                        e.setLine(0, "§9[Heal]");
-                        e.setLine(1, "§aClick here");
-                        e.setLine(2, "§ato get healed!");
+                        e.setLine(0, "[Heal]");
+                        e.setLine(1, "Click here");
+                        e.setLine(2, "to get healed!");
                 }
         	}
         }
@@ -34,7 +34,7 @@ public class HealSignEvent implements Listener {
                 if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
                 if (e.getClickedBlock().getState() instanceof Sign) {
                         Sign s = (Sign) e.getClickedBlock().getState();
-                        if (s.getLine(0).equalsIgnoreCase("§9[Heal]")) {
+                        if (s.getLine(0).equalsIgnoreCase("[Heal]")) {
                                 e.getPlayer().setHealth(20);
                                 e.getPlayer().sendMessage(ChatColor.GREEN + "You were healed!");
                         }

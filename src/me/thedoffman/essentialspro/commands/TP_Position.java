@@ -18,7 +18,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] arg) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         Player player = (Player)sender;
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "Only players can perform this command!");

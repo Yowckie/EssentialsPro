@@ -19,7 +19,7 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("setspawn")) {
             if (!sender.hasPermission("ep.setspawn")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
@@ -31,13 +31,13 @@ implements CommandExecutor {
             }
         }
         if (sender instanceof Player) {
-            String Spawn2 = plugin.getlang().getString("Messages.SpawnSet");
-            Spawn2 = Spawn2.replaceAll("&", "§");
+            String Spawn = plugin.getlang().getString("Messages.SpawnSet");
+            Spawn = Spawn.replaceAll("&", "\u00A7");
             Player p = (Player)sender;
             World world = p.getWorld();
             Location loc = p.getLocation();
-            world.setSpawnLocation(loc.getBlockX(), loc.getBlockY() + 1, loc.getBlockZ());
-            p.sendMessage(plugin.prefix + Spawn2);
+            world.setSpawnLocation(loc);
+            p.sendMessage(plugin.prefix + Spawn);
         }
         return false;
     }

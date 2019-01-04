@@ -23,7 +23,7 @@ Listener {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (!(sender instanceof Player)) {
             sender.sendMessage(plugin.prefix + ChatColor.RED + "Only a ingame player can run that command!");
             return true;
@@ -59,7 +59,7 @@ Listener {
                 ++n2;
             }
             nick = nick.substring(0, nick.length() - 1);
-            nick = nick.replaceAll("&", "§");
+            nick = nick.replaceAll("&", "\u00A7");
             plugin.getplayers().set(p.getName() + ".nickname", nick);
             plugin.saveYamls();
             p.sendMessage(plugin.prefix + ChatColor.GREEN + "Nickname changed!");

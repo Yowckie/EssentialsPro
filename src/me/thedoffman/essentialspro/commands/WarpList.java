@@ -17,14 +17,14 @@ implements CommandExecutor {
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("warplist")) {
             if (!sender.hasPermission("ep.warplist")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             String CE = plugin.getlang().getString("Messages.ConsoleE");
-            CE = CE.replaceAll("&", "§");
+            CE = CE.replaceAll("&", "\u00A7");
             if (sender instanceof Player) {
                 Player p = (Player)sender;
                 String warps = "";

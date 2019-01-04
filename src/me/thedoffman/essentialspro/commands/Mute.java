@@ -20,7 +20,7 @@ implements CommandExecutor {
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player target;
-        plugin.prefix = plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (label.equalsIgnoreCase("mute")) {
             if (!sender.hasPermission("ep.mute")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
