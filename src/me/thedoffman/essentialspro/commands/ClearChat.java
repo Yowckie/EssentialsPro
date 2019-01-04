@@ -22,7 +22,7 @@ public class ClearChat implements CommandExecutor {
 		if (cmd.getName().equalsIgnoreCase("clearchat")) {
 	           int i;
 	           for (i = 0; i < 100; i++)
-	            Bukkit.broadcastMessage("")
+	            Bukkit.broadcastMessage("");
 		}
 		
 		Bukkit.broadcastMessage(plugin.getlang().getString(plugin.prefix + ChatColor.GREEN + "Chat has been cleared!"));
