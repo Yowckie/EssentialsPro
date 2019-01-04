@@ -10,21 +10,21 @@ import org.bukkit.entity.Player;
 
 public class Broadcast
 implements CommandExecutor {
-    private static Main plugin = (Main)Main.getPlugin(Main.class);
+    private static Main plugin = Main.getPlugin(Main.class);
 
     public Broadcast(Main plugin) {
-        Bukkit.getPluginCommand((String)"broadcast").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("broadcast").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Broadcast.plugin.prefix = Broadcast.plugin.prefix.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("broadcast") && sender instanceof Player) {
             if (!sender.hasPermission("ep.broadcast")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (args.length == 0) {
-                sender.sendMessage(String.valueOf(Broadcast.plugin.prefix) + (Object)ChatColor.RED + " You must have a message to broadcast, silly!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + " You must have a message to broadcast, silly!");
             }
             if (args.length > 0) {
                 String broadcast = "";
@@ -33,10 +33,10 @@ implements CommandExecutor {
                 int n2 = 0;
                 while (n2 < n) {
                     String message = arrstring[n2];
-                    broadcast = String.valueOf(broadcast) + message + " ";
+                    broadcast = (broadcast) + message + " ";
                     ++n2;
                 }
-                Bukkit.getServer().broadcastMessage((Object)ChatColor.DARK_BLUE + "[" + (Object)ChatColor.GREEN + "Broadcast" + (Object)ChatColor.DARK_BLUE + "] " + (Object)ChatColor.GRAY + broadcast);
+                Bukkit.getServer().broadcastMessage(ChatColor.DARK_BLUE + "[" + ChatColor.GREEN + "Broadcast" + ChatColor.DARK_BLUE + "] " + ChatColor.GRAY + broadcast);
             }
         }
         return false;

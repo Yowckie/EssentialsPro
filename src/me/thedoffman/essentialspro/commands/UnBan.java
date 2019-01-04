@@ -9,30 +9,30 @@ import org.bukkit.command.CommandSender;
 
 public class UnBan
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public UnBan(Main plugin) {
-        Bukkit.getPluginCommand((String)"unban").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("unban").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("unban")) {
             if (!sender.hasPermission("ep.unban")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (args.length == 0) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a player name!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player name!");
                 return true;
             }
-            if (!this.plugin.getplayers().getBoolean(String.valueOf(args[0]) + ".banned")) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Player " + args[0] + " is not banned!");
+            if (!this.plugin.getplayers().getBoolean(args[0] + ".banned")) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Player " + args[0] + " is not banned!");
                 return true;
             }
-            this.plugin.getplayers().set(String.valueOf(args[0]) + ".banned", (Object)false);
+            this.plugin.getplayers().set(args[0] + ".banned", false);
             this.plugin.saveYamls();
-            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "Unbaned " + args[0] + "!");
+            sender.sendMessage(plugin.prefix + ChatColor.GREEN + "Unbaned " + args[0] + "!");
         }
         return true;
     }

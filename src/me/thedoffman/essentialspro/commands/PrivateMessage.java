@@ -10,40 +10,40 @@ import org.bukkit.entity.Player;
 
 public class PrivateMessage
 implements CommandExecutor {
-    private static Main plugin = (Main)Main.getPlugin(Main.class);
+    private static Main plugin = Main.getPlugin(Main.class);
 
     public PrivateMessage(Main plugin) {
-        Bukkit.getPluginCommand((String)"pm").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("pm").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        PrivateMessage.plugin.prefix = PrivateMessage.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("pm")) {
             if (!sender.hasPermission("ep.pm")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (sender instanceof Player) {
                 Player p = (Player)sender;
                 if (args.length == 0) {
-                    p.sendMessage(String.valueOf(PrivateMessage.plugin.prefix) + (Object)ChatColor.RED + "Syntax: /pm <To> <Message>");
+                    p.sendMessage(plugin.prefix + ChatColor.RED + "Syntax: /pm <To> <Message>");
                 } else {
                     @SuppressWarnings("deprecation")
-					Player target = Bukkit.getPlayer((String)args[0]);
+					Player target = Bukkit.getPlayer(args[0]);
                     if (target != null) {
                         String message = "";
                         int i = 1;
                         while (i != args.length) {
-                            message = String.valueOf(message) + args[1] + " ";
+                            message = message + args[1] + " ";
                             ++i;
                         }
-                        target.sendMessage(String.valueOf(PrivateMessage.plugin.prefix) + (Object)ChatColor.BLUE + sender.getName() + (Object)ChatColor.WHITE + " > " + (Object)ChatColor.BLUE + "YOU " + (Object)ChatColor.WHITE + ": " + (Object)ChatColor.GREEN + message);
+                        target.sendMessage(plugin.prefix + ChatColor.BLUE + sender.getName() + ChatColor.WHITE + " > " + ChatColor.BLUE + "YOU " + ChatColor.WHITE + ": " + ChatColor.GREEN + message);
                     } else {
-                        sender.sendMessage(String.valueOf(PrivateMessage.plugin.prefix) + (Object)ChatColor.RED + "ERROR: This player is not connected on the server!");
+                        sender.sendMessage(plugin.prefix + ChatColor.RED + "ERROR: This player is not connected on the server!");
                     }
                 }
             } else {
-                sender.sendMessage(String.valueOf(PrivateMessage.plugin.prefix) + "You're not a player");
+                sender.sendMessage(plugin.prefix + "You're not a player");
             }
         }
         return true;

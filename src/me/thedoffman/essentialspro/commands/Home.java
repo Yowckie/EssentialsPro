@@ -12,81 +12,81 @@ import org.bukkit.entity.Player;
 
 public class Home
 implements CommandExecutor {
-    private static Main plugin = (Main)Main.getPlugin(Main.class);
+    private static Main plugin = Main.getPlugin(Main.class);
 
     public Home(Main plugin) {
-        Bukkit.getPluginCommand((String)"home").setExecutor((CommandExecutor)this);
-        Bukkit.getPluginCommand((String)"sethome").setExecutor((CommandExecutor)this);
-        Bukkit.getPluginCommand((String)"delhome").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("home").setExecutor(this);
+        Bukkit.getPluginCommand("sethome").setExecutor(this);
+        Bukkit.getPluginCommand("delhome").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        Home.plugin.prefix = Home.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("home")) {
             if (!sender.hasPermission("ep.home")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (!(sender instanceof Player)) {
-                sender.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Error: Only players can go home!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can go home!");
                 return true;
             }
             if (args.length == 0) {
-                p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Use: /home <Name>");
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /home <Name>");
                 return true;
             }
-            if (plugin.getplayers().getConfigurationSection(String.valueOf(p.getName()) + ".homes." + args[0]) == null) {
-                p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Home " + args[0] + " does not exist!");
+            if (plugin.getplayers().getConfigurationSection((p.getName()) + ".homes." + args[0]) == null) {
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Home " + args[0] + " does not exist!");
                 return true;
             }
-            World w = Bukkit.getServer().getWorld(plugin.getplayers().getString(String.valueOf(p.getName()) + ".homes." + args[0] + ".world"));
-            double x = plugin.getplayers().getDouble(String.valueOf(p.getName()) + ".homes." + args[0] + ".x");
-            double y = plugin.getplayers().getDouble(String.valueOf(p.getName()) + ".homes." + args[0] + ".y");
-            double z = plugin.getplayers().getDouble(String.valueOf(p.getName()) + ".homes." + args[0] + ".z");
+            World w = Bukkit.getServer().getWorld(plugin.getplayers().getString((p.getName()) + ".homes." + args[0] + ".world"));
+            double x = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".x");
+            double y = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".y");
+            double z = plugin.getplayers().getDouble((p.getName()) + ".homes." + args[0] + ".z");
             p.teleport(new Location(w, x, y, z));
-            p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.BLUE + "Welcome to " + (Object)ChatColor.GREEN + args[0] + (Object)ChatColor.BLUE + "!");
+            p.sendMessage(plugin.prefix + ChatColor.BLUE + "Welcome to " + ChatColor.GREEN + args[0] + ChatColor.BLUE + "!");
         }
         if (cmd.getName().equalsIgnoreCase("sethome")) {
             if (!sender.hasPermission("ep.sethome")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (!(sender instanceof Player)) {
-                sender.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Error: Only players can set a home!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set a home!");
                 return true;
             }
             if (args.length == 0) {
-                p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Use: /sethome <Name>");
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /sethome <Name>");
                 return true;
             }
-            plugin.getplayers().set(String.valueOf(p.getName()) + ".homes." + args[0] + ".world", (Object)p.getLocation().getWorld().getName());
-            plugin.getplayers().set(String.valueOf(p.getName()) + ".homes." + args[0] + ".x", (Object)p.getLocation().getX());
-            plugin.getplayers().set(String.valueOf(p.getName()) + ".homes." + args[0] + ".y", (Object)p.getLocation().getY());
-            plugin.getplayers().set(String.valueOf(p.getName()) + ".homes." + args[0] + ".z", (Object)p.getLocation().getZ());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".world", p.getLocation().getWorld().getName());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".x", p.getLocation().getX());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".y", p.getLocation().getY());
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0] + ".z", p.getLocation().getZ());
             plugin.saveYamls();
-            p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.BLUE + "Home " + (Object)ChatColor.GREEN + args[0] + (Object)ChatColor.BLUE + " set!");
+            p.sendMessage(plugin.prefix + ChatColor.BLUE + "Home " + ChatColor.GREEN + args[0] + ChatColor.BLUE + " set!");
         }
         if (cmd.getName().equalsIgnoreCase("delhome")) {
             if (!sender.hasPermission("ep.deletehome")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (!(sender instanceof Player)) {
-                sender.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Error: Only players can delete a home!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can delete a home!");
                 return true;
             }
             if (args.length == 0) {
-                p.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Use: /delhome <Name>");
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /delhome <Name>");
                 return true;
             }
-            if (plugin.getplayers().getConfigurationSection(String.valueOf(p.getName()) + ".homes." + args[0]) == null) {
-                sender.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.RED + "Home " + args[0] + " does not exist!");
+            if (plugin.getplayers().getConfigurationSection((p.getName()) + ".homes." + args[0]) == null) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Home " + args[0] + " does not exist!");
                 return true;
             }
-            plugin.getplayers().set(String.valueOf(p.getName()) + ".homes." + args[0], null);
+            plugin.getplayers().set((p.getName()) + ".homes." + args[0], null);
             plugin.saveYamls();
-            sender.sendMessage(String.valueOf(Home.plugin.prefix) + (Object)ChatColor.GREEN + "Removed home " + args[0] + "!");
+            sender.sendMessage(plugin.prefix + ChatColor.GREEN + "Removed home " + args[0] + "!");
             return true;
         }
         return false;

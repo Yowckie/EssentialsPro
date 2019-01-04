@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 
 public class Feed
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Feed(Main plugin) {
-        Bukkit.getPluginCommand((String)"feed").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("feed").setExecutor((CommandExecutor)this);
     }
 
     @SuppressWarnings("deprecation")
@@ -22,10 +22,10 @@ implements CommandExecutor {
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("feed")) {
             if (!sender.hasPermission("ep.feed")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Use: /feed <Name>");
+            p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /feed <Name>");
             if (args.length == 0 && !(sender instanceof Player)) {
                 return true;
             }
@@ -35,13 +35,13 @@ implements CommandExecutor {
         } else {
             target = Bukkit.getServer().getPlayer(args[0]);
             if (target == null) {
-                p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Error: Could not find player " + args[0] + "!");
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Error: Could not find player " + args[0] + "!");
                 return true;
             }
         }
         target.setFoodLevel(20);
-        p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "You have been healed!");
-        target.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "You have been healed by " + p.getName() + "!");
+        p.sendMessage(plugin.prefix + ChatColor.GREEN + "You have been healed!");
+        target.sendMessage(plugin.prefix + ChatColor.GREEN + "You have been healed by " + p.getName() + "!");
         return true;
     }
 }

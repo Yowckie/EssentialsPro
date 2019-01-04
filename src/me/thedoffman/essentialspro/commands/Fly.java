@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 
 public class Fly
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Fly(Main plugin) {
         Bukkit.getPluginCommand("fly").setExecutor((CommandExecutor)this);

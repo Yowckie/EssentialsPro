@@ -12,45 +12,44 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
-import org.bukkit.plugin.Plugin;
 
 public class Vanish
 implements CommandExecutor,
 Listener {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
     private ArrayList<Player> vanished = new ArrayList<Player>();
 
     public Vanish(Main plugin) {
-        Bukkit.getPluginCommand((String)"vanish").setExecutor((CommandExecutor)this);
-        Bukkit.getPluginManager().registerEvents((Listener)this, (Plugin)plugin);
+        Bukkit.getPluginCommand("vanish").setExecutor(this);
+        Bukkit.getPluginManager().registerEvents(this, plugin);
     }
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (!(sender instanceof Player)) {
-            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "You cannot vanish!");
+            sender.sendMessage(plugin.prefix + ChatColor.RED + "You cannot vanish!");
             return true;
         }
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("vanish")) {
             if (!sender.hasPermission("ep.vanish")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            if (!this.vanished.contains((Object)p)) {
+            if (vanished.contains(p)) {
                 for (Player pl : Bukkit.getServer().getOnlinePlayers()) {
                     pl.hidePlayer(p);
                 }
-                this.vanished.add(p);
-                p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "POOF! You have been vanished!");
+                vanished.add(p);
+                p.sendMessage(plugin.prefix + ChatColor.GREEN + "POOF! You have been vanished!");
                 return true;
             }
             for (Player pl : Bukkit.getServer().getOnlinePlayers()) {
                 pl.showPlayer(p);
             }
-            this.vanished.remove((Object)p);
-            p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "POOF! You have been unvanished!");
+            vanished.remove(p);
+            p.sendMessage(plugin.prefix + ChatColor.GREEN + "POOF! You have been unvanished!");
             return true;
         }
         return true;
@@ -66,7 +65,7 @@ Listener {
 
     @EventHandler
     public void onPlayerLeave(PlayerQuitEvent e) {
-        this.vanished.remove((Object)e.getPlayer());
+        vanished.remove(e.getPlayer());
     }
 }
 

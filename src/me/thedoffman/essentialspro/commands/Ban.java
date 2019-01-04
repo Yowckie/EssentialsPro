@@ -10,10 +10,10 @@ import org.bukkit.entity.Player;
 
 public class Ban
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Ban(Main plugin) {
-        Bukkit.getPluginCommand((String)"ban").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("ban").setExecutor(this);
     }
 
     @SuppressWarnings("deprecation")
@@ -21,18 +21,18 @@ implements CommandExecutor {
         this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
         if (label.equalsIgnoreCase("ban")) {
             if (!sender.hasPermission("ep.ban")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (args.length == 0) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a player and reason!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player and reason!");
             } else if (args.length == 1) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a reason!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a reason!");
             } else {
                 StringBuilder x = new StringBuilder();
                 int i = 1;
                 while (i < args.length) {
-                    x.append(String.valueOf(args[i]) + " ");
+                    x.append((args[i]) + " ");
                     ++i;
                 }
                 String banner = sender.getName();
@@ -40,14 +40,14 @@ implements CommandExecutor {
                     banner = sender.getName();
                 }
 				Player target = Bukkit.getPlayer((String)args[0]);
-                this.plugin.getplayers().set(String.valueOf(args[0]) + ".banned", (Object)true);
+                this.plugin.getplayers().set((args[0]) + ".banned", (Object)true);
                 this.plugin.getplayers().set(String.valueOf(args[0]) + ".reason", (Object)x.toString());
                 this.plugin.getplayers().set(String.valueOf(args[0]) + ".banner", (Object)banner);
                 this.plugin.saveYamls();
-                Bukkit.getOfflinePlayer((String)args[0]).isBanned();
-                target.kickPlayer((Object)ChatColor.RED + "You have been banned from the server!\nBy: " + banner + "\nReason: " + x.toString());
-                Bukkit.broadcastMessage((String)(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + args[0] + (Object)ChatColor.BLUE + " was banned from the server!"));
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.BLUE + "Successfully banned: " + (Object)ChatColor.GREEN + (Object)target);
+                Bukkit.getOfflinePlayer(args[0]).isBanned();
+                target.kickPlayer(ChatColor.RED + "You have been banned from the server!\nBy: " + banner + "\nReason: " + x.toString());
+                Bukkit.broadcastMessage(plugin.prefix + ChatColor.GREEN + args[0] + ChatColor.BLUE + " was banned from the server!");
+                sender.sendMessage(plugin.prefix + ChatColor.BLUE + "Successfully banned: " + ChatColor.GREEN + target);
                 return true;
             }
         }

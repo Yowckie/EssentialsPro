@@ -9,26 +9,26 @@ import org.bukkit.command.CommandSender;
 
 public class ClearChat
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public ClearChat(Main plugin) {
-        Bukkit.getPluginCommand((String)"clearchat").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("clearchat").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
         this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("clearchat")) {
             if (!sender.hasPermission("ep.clearchat")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             int i = 0;
             while (i < 100) {
-                Bukkit.broadcastMessage((String)"");
+                Bukkit.broadcastMessage("");
                 ++i;
             }
         }
-        Bukkit.broadcastMessage((String)this.plugin.getlang().getString(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "Chat has been cleared!"));
+        Bukkit.broadcastMessage(plugin.getlang().getString(plugin.prefix + ChatColor.GREEN + "Chat has been cleared!"));
         return true;
     }
 }

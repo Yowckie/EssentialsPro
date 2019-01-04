@@ -10,51 +10,51 @@ import org.bukkit.entity.Player;
 
 public class Mute
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Mute(Main plugin) {
-        Bukkit.getPluginCommand((String)"mute").setExecutor((CommandExecutor)this);
-        Bukkit.getPluginCommand((String)"unmute").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("mute").setExecutor(this);
+        Bukkit.getPluginCommand("unmute").setExecutor(this);
     }
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         Player target;
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (label.equalsIgnoreCase("mute")) {
             if (!sender.hasPermission("ep.mute")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (args.length == 0) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a player!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player!");
             } else {
                 target = Bukkit.getPlayer((String)args[0]);
                 if (target == null) {
-                    sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + args[0] + " is not online!");
+                    sender.sendMessage(plugin.prefix + ChatColor.RED + args[0] + " is not online!");
                     return true;
                 }
-                Bukkit.broadcastMessage((String)(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + target.getName() + (Object)ChatColor.RED + " was muted!"));
-                this.plugin.getplayers().set(String.valueOf(args[0]) + ".mute", (Object)true);
-                this.plugin.saveYamls();
+                Bukkit.broadcastMessage(plugin.prefix + ChatColor.GREEN + target.getName() + ChatColor.RED + " was muted!");
+                plugin.getplayers().set(args[0] + ".mute", true);
+                plugin.saveYamls();
             }
         }
         if (label.equalsIgnoreCase("unmute")) {
             if (!sender.hasPermission("ep.unmute")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (args.length == 0) {
-                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a player!");
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player!");
             } else {
                 target = Bukkit.getPlayer((String)args[0]);
                 if (target == null) {
-                    sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + args[0] + " is not online!");
+                    sender.sendMessage(plugin.prefix + ChatColor.RED + args[0] + " is not online!");
                     return true;
                 }
-                Bukkit.broadcastMessage((String)(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + target.getName() + (Object)ChatColor.RED + " was unmuted!"));
-                this.plugin.getplayers().set(String.valueOf(args[0]) + ".mute", (Object)false);
-                this.plugin.saveYamls();
+                Bukkit.broadcastMessage(plugin.prefix + ChatColor.GREEN + target.getName() + (Object)ChatColor.RED + " was unmuted!");
+                plugin.getplayers().set(args[0] + ".mute", false);
+                plugin.saveYamls();
             }
         }
         return false;

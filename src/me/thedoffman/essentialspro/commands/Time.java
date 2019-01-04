@@ -10,14 +10,14 @@ import org.bukkit.entity.Player;
 
 public class Time
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Time(Main plugin) {
-        Bukkit.getPluginCommand((String)"time").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("time").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         if (cmd.getName().equalsIgnoreCase("time") && !sender.hasPermission("ep.time")) {
             sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
             return true;
@@ -25,19 +25,19 @@ implements CommandExecutor {
         if (sender instanceof Player) {
             Player player = (Player)sender;
             if (args.length == 0) {
-                player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "usage: /time [day:night:noon]");
+                player.sendMessage(plugin.prefix + ChatColor.RED + "usage: /time [day:night:noon]");
             } else if (args.length == 1) {
                 if (args[0].equalsIgnoreCase("day")) {
                     player.getWorld().setTime(0L);
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.DARK_GREEN + "Time set to Day.");
+                    player.sendMessage(plugin.prefix + ChatColor.DARK_GREEN + "Time set to Day.");
                 } else if (args[0].equalsIgnoreCase("night")) {
                     player.getWorld().setTime(14000L);
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.DARK_GREEN + "Time set to Night.");
+                    player.sendMessage(plugin.prefix + ChatColor.DARK_GREEN + "Time set to Night.");
                 } else if (args[0].equalsIgnoreCase("noon")) {
                     player.getWorld().setTime(6000L);
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.DARK_GREEN + "Time set to Noon.");
+                    player.sendMessage(plugin.prefix + ChatColor.DARK_GREEN + "Time set to Noon.");
                 } else {
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "usage: /time [day:night]");
+                    player.sendMessage(plugin.prefix + ChatColor.RED + "usage: /time [day:night]");
                     return true;
                 }
             }

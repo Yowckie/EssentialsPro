@@ -11,26 +11,26 @@ import org.bukkit.entity.Player;
 
 public class TP_Position
 implements CommandExecutor {
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public TP_Position(Main plugin) {
-        Bukkit.getPluginCommand((String)"tpc").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("tpc").setExecutor(this);
     }
 
     public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] arg) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "§");
+        plugin.prefix = plugin.prefix.replaceAll("&", "§");
         Player player = (Player)sender;
         if (!(sender instanceof Player)) {
-            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Only players can perform this command!");
+            sender.sendMessage(plugin.prefix + ChatColor.RED + "Only players can perform this command!");
         } else if (cmd.getName().equalsIgnoreCase("tpc") && player.isOp()) {
             if (!sender.hasPermission("ep.tpc")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             if (arg.length < 3) {
-                player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Too few arguements. /tpc <x> <y> <z>");
+                player.sendMessage(plugin.prefix + ChatColor.RED + "Too few arguements. /tpc <x> <y> <z>");
             } else if (arg.length > 3) {
-                player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Too many arguements. /tpc <x> <y> <z>");
+                player.sendMessage(plugin.prefix + ChatColor.RED + "Too many arguements. /tpc <x> <y> <z>");
             } else {
                 try {
                     double x = Integer.parseInt(arg[0]);
@@ -38,14 +38,14 @@ implements CommandExecutor {
                     double z = Integer.parseInt(arg[2]);
                     Location loc = new Location(player.getWorld(), x, y, z);
                     player.teleport(loc);
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + "Teleporting to X:" + x + " Y:" + y + " Z:" + z);
+                    player.sendMessage(plugin.prefix + "Teleporting to X:" + x + " Y:" + y + " Z:" + z);
                 }
                 catch (NumberFormatException e) {
-                    player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "The numbers may not have decimals!");
+                    player.sendMessage(plugin.prefix + ChatColor.RED + "The numbers may not have decimals!");
                 }
             }
         } else {
-            player.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "You do not have permission to use this command");
+            player.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use this command");
         }
         return true;
     }

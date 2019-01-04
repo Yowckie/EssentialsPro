@@ -12,32 +12,32 @@ import org.bukkit.inventory.Inventory;
 public class Invsee
 implements CommandExecutor {
     private Inventory inv;
-    private Main plugin = (Main)Main.getPlugin(Main.class);
+    private Main plugin = Main.getPlugin(Main.class);
 
     public Invsee(Main plugin) {
-        Bukkit.getPluginCommand((String)"invsee").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand("invsee").setExecutor(this);
     }
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         if (!(sender instanceof Player)) {
-            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Error: Only players can see inventories!");
+            sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can see inventories!");
             return true;
         }
         if (cmd.getName().equalsIgnoreCase("invsee")) {
             if (!sender.hasPermission("ep.invsee")) {
-                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
             Player p = (Player)sender;
             if (args.length == 0) {
-                p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Invalid Syntax! Usage: /invsee <player...>");
+                p.sendMessage(plugin.prefix + ChatColor.RED + "Invalid Syntax! Usage: /invsee <player...>");
                 return false;
             }
             if (args.length == 1) {
                 Player target = Bukkit.getServer().getPlayer(args[0]);
                 if (target == null) {
-                    p.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "That player is not online");
+                    p.sendMessage(plugin.prefix + ChatColor.RED + "That player is not online");
                     return false;
                 }
                 this.inv = target.getInventory();
