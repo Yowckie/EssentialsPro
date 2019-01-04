@@ -23,11 +23,11 @@ public class JoinEvent implements Listener {
         Player player = e.getPlayer();
         
         String join = plugin.getlang().getString("Messages.JoinIG").replaceAll("%player%", e.getPlayer().getName().toString());
-        join = join.replaceAll("&", "ยง");
+        join = join.replaceAll("&", "ง");
 		e.setJoinMessage(join);
 		
         String system = plugin.getlang().getString("Messages.Join").replaceAll("%player%", e.getPlayer().getName().toString());
-        system = system.replaceAll("&", "ยง");
+        system = system.replaceAll("&", "ง");
         
 		e.getPlayer().sendMessage(system);
 		e.getPlayer().sendMessage(ChatColor.BLUE + "Type " + ChatColor.GREEN + "/ep " + ChatColor.BLUE + "for list of commands.");

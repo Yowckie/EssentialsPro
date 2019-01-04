@@ -27,34 +27,34 @@ public class DeathEvent implements Listener {
         DamageCause dc = ldc.getCause();
 		
         String EA = plugin.getconfigs().getString("Deathmessages.entity").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        EA = EA.replaceAll("&", "ยง");
+        EA = EA.replaceAll("&", "ง");
         
         String EE = plugin.getconfigs().getString("Deathmessages.explosion").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        EE = EE.replaceAll("&", "ยง");
+        EE = EE.replaceAll("&", "ง");
         
         String L = plugin.getconfigs().getString("Deathmessages.lightning").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        L = L.replaceAll("&", "ยง");
+        L = L.replaceAll("&", "ง");
         
         String D = plugin.getconfigs().getString("Deathmessages.drowning").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        D = D.replaceAll("&", "ยง");
+        D = D.replaceAll("&", "ง");
         
         String F = plugin.getconfigs().getString("Deathmessages.falling").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        F = F.replaceAll("&", "ยง");
+        F = F.replaceAll("&", "ง");
         
         String Fire = plugin.getconfigs().getString("Deathmessages.fire").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        Fire = Fire.replaceAll("&", "ยง");
+        Fire = Fire.replaceAll("&", "ง");
         
         String S = plugin.getconfigs().getString("Deathmessages.starvation").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        S = S.replaceAll("&", "ยง");
+        S = S.replaceAll("&", "ง");
         
         String C = plugin.getconfigs().getString("Deathmessages.contact").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        D = C.replaceAll("&", "ยง");
+        D = C.replaceAll("&", "ง");
         
         String P = plugin.getconfigs().getString("Deathmessages.projectile").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        P = P.replaceAll("&", "ยง");
+        P = P.replaceAll("&", "ง");
 		
         String V = plugin.getconfigs().getString("Deathmessages.void").replaceAll("%player%", e.getEntity().getPlayer().getName().toString());
-        V = V.replaceAll("&", "ยง");
+        V = V.replaceAll("&", "ง");
         
 	// Death Messages	
         if (plugin.getconfigs().getBoolean("Deathmessages.enable") == true) {

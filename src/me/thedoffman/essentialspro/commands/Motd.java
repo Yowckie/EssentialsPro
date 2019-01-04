@@ -1,5 +1,6 @@
 package me.thedoffman.essentialspro.commands;
 
+import me.thedoffman.essentialspro.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,65 +9,76 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.server.ServerListPingEvent;
+import org.bukkit.plugin.Plugin;
 
-import me.thedoffman.essentialspro.main.Main;
+public class Motd
+implements CommandExecutor,
+Listener {
+    private Main plugin = (Main)Main.getPlugin(Main.class);
 
-public class Motd implements CommandExecutor, Listener {
-	
-	private Main plugin = Main.getPlugin(Main.class);
-	
     public Motd(Main plugin) {
-        Bukkit.getPluginCommand("motd").setExecutor(this);
-        Bukkit.getPluginCommand("setmotd").setExecutor(this);
-        
-        Bukkit.getPluginManager().registerEvents(this, plugin);
-        
+        Bukkit.getPluginCommand((String)"motd").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginCommand((String)"setmotd").setExecutor((CommandExecutor)this);
+        Bukkit.getPluginManager().registerEvents((Listener)this, (Plugin)plugin);
     }
-	
+
     @EventHandler
     public void onServerPing(ServerListPingEvent e) {
-        String motd = plugin.getlang().getString("Messages.MOTD");
-        motd = motd.replaceAll("&", "ยง");
-            e.setMotd(motd);
+        String motd = this.plugin.getlang().getString("Messages.MOTD");
+        motd = motd.replaceAll("&", "ง");
+        e.setMotd(motd);
     }
 
-    
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-		plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
-    	
-        String motdA = plugin.getlang().getString("Messages.Access");
-        motdA = motdA.replaceAll("&", "ยง");
+        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "\u00a7");
+        String motdA = this.plugin.getlang().getString("Messages.Access");
+        motdA = motdA.replaceAll("&", "ง");
         if (cmd.getName().equalsIgnoreCase("motd")) {
-                if (!sender.hasPermission("ep.motd")) {
-                        sender.sendMessage(plugin.prefix + motdA);
-                        return true;
-} 
-                String system = plugin.getlang().getString("Messages.MOTD");
-                system = system.replaceAll("&", "ยง");
-                sender.sendMessage(plugin.prefix + ChatColor.GREEN + "MOTD: " + system);
+            if (!sender.hasPermission("ep.motd")) {
+                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
                 return true;
+            }
+            if (!sender.hasPermission("ep.motd")) {
+                sender.sendMessage(String.valueOf(this.plugin.prefix) + motdA);
+                return true;
+            }
+            String system = this.plugin.getlang().getString("Messages.MOTD");
+            system = system.replaceAll("&", "ง");
+            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "MOTD: " + system);
+            return true;
         }
         if (cmd.getName().equalsIgnoreCase("setmotd")) {
-            if (!sender.hasPermission("ep.motdset")) {
-                    sender.sendMessage(plugin.prefix + motdA);
+            if (!sender.hasPermission("ep.setmotd")) {
+                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                return true;
+            }
+            if (!sender.hasPermission("ep.setmotd")) {
+                if (!sender.hasPermission("ep.setmotd")) {
+                    sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
                     return true;
+                }
+                sender.sendMessage(String.valueOf(this.plugin.prefix) + motdA + (Object)ChatColor.GREEN + "- Has been set.");
+                return true;
             }
             if (args.length == 0) {
-                    sender.sendMessage(ChatColor.DARK_RED + "Error: Please type a new MOTD!");
-                    return true;
+                sender.sendMessage((Object)ChatColor.DARK_RED + "Error: Please type a new MOTD!");
+                return true;
             }
             StringBuilder str = new StringBuilder();
-            for (int i = 0; i < args.length; i++) {
-                    str.append(args[i] + " ");
+            int i = 0;
+            while (i < args.length) {
+                str.append(String.valueOf(args[i]) + " ");
+                ++i;
             }
             String motd = str.toString();
-            plugin.getlang().set("Messages.MOTD", motd);
-            String system = plugin.getlang().getString("Messages.MOTD");
-            system = system.replaceAll("&", "ยง");
-            sender.sendMessage(plugin.prefix + ChatColor.GREEN + "MOTD: " + system);
-            plugin.saveYamls();
+            this.plugin.getlang().set("Messages.MOTD", (Object)motd);
+            String system = this.plugin.getlang().getString("Messages.MOTD");
+            system = system.replaceAll("&", "\u00a7");
+            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "MOTD: " + system);
+            this.plugin.saveYamls();
             return true;
-    }
-		return false;
+        }
+        return false;
     }
 }
+

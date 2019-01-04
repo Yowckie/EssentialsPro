@@ -1,37 +1,40 @@
 package me.thedoffman.essentialspro.commands;
 
+import me.thedoffman.essentialspro.main.Main;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
-import me.thedoffman.essentialspro.main.Main;
+public class UnBan
+implements CommandExecutor {
+    private Main plugin = (Main)Main.getPlugin(Main.class);
 
-public class UnBan implements CommandExecutor {
-	
     public UnBan(Main plugin) {
-        Bukkit.getPluginCommand("unban").setExecutor(this);
+        Bukkit.getPluginCommand((String)"unban").setExecutor((CommandExecutor)this);
     }
 
-	private Main plugin = Main.getPlugin(Main.class);
-	
-	public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args){
-		plugin.prefix = plugin.prefix.replaceAll("&", "ยง");
-		
+    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
+        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "ง");
         if (cmd.getName().equalsIgnoreCase("unban")) {
+            if (!sender.hasPermission("ep.unban")) {
+                sender.sendMessage((Object)ChatColor.RED + "You do not have permission to use that command!");
+                return true;
+            }
             if (args.length == 0) {
-                    sender.sendMessage(plugin.prefix + ChatColor.RED + "Please specify a player name!");
-                    return true;
+                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Please specify a player name!");
+                return true;
             }
-            if (plugin.getplayers().getBoolean(args[0] + ".banned") == false) {
-                    sender.sendMessage(plugin.prefix + ChatColor.RED + "Player " + args[0] + " is not banned!");
-                    return true;
+            if (!this.plugin.getplayers().getBoolean(String.valueOf(args[0]) + ".banned")) {
+                sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.RED + "Player " + args[0] + " is not banned!");
+                return true;
             }
-            plugin.getplayers().set(args[0] + ".banned", false);
-            plugin.saveYamls();
-            sender.sendMessage(plugin.prefix + ChatColor.GREEN + "Unbaned " + args[0] + "!");
-            }	
-	return true;
-	}
+            this.plugin.getplayers().set(String.valueOf(args[0]) + ".banned", (Object)false);
+            this.plugin.saveYamls();
+            sender.sendMessage(String.valueOf(this.plugin.prefix) + (Object)ChatColor.GREEN + "Unbaned " + args[0] + "!");
+        }
+        return true;
+    }
 }
+

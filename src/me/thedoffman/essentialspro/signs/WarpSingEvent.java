@@ -23,13 +23,12 @@ public class WarpSingEvent implements Listener {
 	
     @EventHandler
     public void onSignChange(SignChangeEvent e) {
-    	if(e.getPlayer().hasPermission("ep.singwarp")){
         if (e.getLine(0).equalsIgnoreCase("[Warp]")) {
             if (plugin.getwarps().get("warps."+e.getLine(1)) == null) {
                 e.getPlayer().sendMessage(ChatColor.RED+"The specified warp does not exist! Please create a new sign with a valid warp.");
                 return;
             }
-
+        	if(e.getPlayer().hasPermission("ep.singwarp")){
             e.getPlayer().sendMessage(ChatColor.BLUE+"Successfully created a new warp sign for the warp " + ChatColor.GREEN+e.getLine(1) + ChatColor.BLUE+"!");
             e.setLine(0, ChatColor.BLUE+ChatColor.BOLD.toString() + "[Warp]");
             e.setLine(1, ChatColor.GREEN + e.getLine(1));

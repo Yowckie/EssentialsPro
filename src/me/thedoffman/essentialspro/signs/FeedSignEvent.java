@@ -22,9 +22,9 @@ public class FeedSignEvent implements Listener {
         public void onSignChange(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singfeed")){
                 if (e.getLine(0).equalsIgnoreCase("[Feed]")) {
-                        e.setLine(0, "Â§9[Feed]");
-                        e.setLine(1, "Â§aClick here");
-                        e.setLine(2, "Â§ato get Food!");
+                        e.setLine(0, "§9[Feed]");
+                        e.setLine(1, "§aClick here");
+                        e.setLine(2, "§ato get Food!");
                 }
         	}
         }
@@ -36,7 +36,7 @@ public class FeedSignEvent implements Listener {
                 if (!(e.getAction() == Action.RIGHT_CLICK_BLOCK)) return;
                 if (e.getClickedBlock().getState() instanceof Sign) {
                         Sign s = (Sign) e.getClickedBlock().getState();
-                        if (s.getLine(0).equalsIgnoreCase("Â§9[Feed]")) {
+                        if (s.getLine(0).equalsIgnoreCase("§9[Feed]")) {
                                 e.getPlayer().setFoodLevel(20);;
                                 e.getPlayer().sendMessage(ChatColor.GREEN + "You were Fed!");
                         }
