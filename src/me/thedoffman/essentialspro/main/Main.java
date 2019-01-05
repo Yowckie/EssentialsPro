@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import me.thedoffman.essentialspro.commands.Ban;
 import me.thedoffman.essentialspro.commands.Broadcast;
+import me.thedoffman.essentialspro.commands.ClearChat;
 import me.thedoffman.essentialspro.commands.ClearInventory;
 import me.thedoffman.essentialspro.commands.Feed;
 import me.thedoffman.essentialspro.commands.Fly;
@@ -37,7 +38,6 @@ import me.thedoffman.essentialspro.commands.Warp;
 import me.thedoffman.essentialspro.commands.WarpList;
 import me.thedoffman.essentialspro.commands.Weather;
 import me.thedoffman.essentialspro.commands.Invsee;
-import me.thedoffman.essentialspro.commands.Vanish;
 
 import me.thedoffman.essentialspro.events.DeathEvent;
 import me.thedoffman.essentialspro.events.JoinEvent;
@@ -101,9 +101,9 @@ public class Main extends JavaPlugin implements Listener {
 		new Fly(this);
 		new ClearInventory(this);
 		new Invsee(this);
-		new Vanish(this);
 		new Home(this);
 		new PrivateMessage(this);
+		new ClearChat(this);
 		
 // Events		
         new JoinEvent(this);
@@ -117,7 +117,6 @@ public class Main extends JavaPlugin implements Listener {
         new ColoredSignsEvent(this);
         new TimeSignEvent(this);
         new DeathEvent(this);
-        new Vanish(this);
         new RespawnEvent(this);
         
         new Metrics(this);

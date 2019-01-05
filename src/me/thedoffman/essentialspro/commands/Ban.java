@@ -8,8 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Ban
-implements CommandExecutor {
+public class Ban implements CommandExecutor {
     private Main plugin = Main.getPlugin(Main.class);
 
     public Ban(Main plugin) {
@@ -20,7 +19,7 @@ implements CommandExecutor {
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         this.plugin.prefix = this.plugin.prefix.replaceAll("&", "\u00A7");
         if (label.equalsIgnoreCase("ban")) {
-            if (!sender.hasPermission("ep.ban")) {
+            if (sender.hasPermission("ep.ban")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }

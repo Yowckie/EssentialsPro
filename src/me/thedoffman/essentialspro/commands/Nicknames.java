@@ -12,9 +12,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
 
-public class Nicknames
-implements CommandExecutor,
-Listener {
+public class Nicknames implements CommandExecutor, Listener {
     private static Main plugin = Main.getPlugin(Main.class);
 
     public Nicknames(Main plugin) {

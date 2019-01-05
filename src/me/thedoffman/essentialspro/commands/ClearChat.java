@@ -6,30 +6,38 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 
-public class ClearChat
-implements CommandExecutor {
-    private Main plugin = Main.getPlugin(Main.class);
+public class ClearChat implements CommandExecutor {
+	
+    @SuppressWarnings("unused")
+	private static Main plugin = Main.getPlugin(Main.class);
 
     public ClearChat(Main plugin) {
         Bukkit.getPluginCommand("clearchat").setExecutor(this);
     }
 
-    public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
-        this.plugin.prefix = this.plugin.prefix.replaceAll("&", "\u00A7");
+    public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
+        
         if (cmd.getName().equalsIgnoreCase("clearchat")) {
-            if (!sender.hasPermission("ep.clearchat")) {
-                sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
+            Player p = (Player) sender;
+           
+            if(p.hasPermission("clearchat")) {
+               
+               
+            	for (int x = 0; x < 150; x++){
+            	    Bukkit.broadcastMessage("");
+            	}
+               
+                Bukkit.broadcastMessage(ChatColor.GREEN + "|-------------------+====+-------------------|");
+                Bukkit.broadcastMessage(ChatColor.BLUE + " The chat has been cleared by " + ChatColor.DARK_GREEN + sender.getName());
+                Bukkit.broadcastMessage(ChatColor.GREEN + "|-------------------+====+-------------------|");
+               
                 return true;
-            }
-            int i = 0;
-            while (i < 100) {
-                Bukkit.broadcastMessage("");
-                ++i;
+               
             }
         }
-        Bukkit.broadcastMessage(plugin.getlang().getString(plugin.prefix + ChatColor.GREEN + "Chat has been cleared!"));
-        return true;
+		return false;
     }
 }
 

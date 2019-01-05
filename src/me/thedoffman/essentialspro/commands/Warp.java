@@ -10,8 +10,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Warp
-implements CommandExecutor {
+public class Warp implements CommandExecutor {
     private static Main plugin = Main.getPlugin(Main.class);
 
     public Warp(Main plugin) {
@@ -24,7 +23,7 @@ implements CommandExecutor {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("warp")) {
-            if (!sender.hasPermission("ep.warp")) {
+            if (!sender.hasPermission("ep.warp." + args[0]) && !sender.hasPermission("ep.warp.*")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
@@ -43,7 +42,7 @@ implements CommandExecutor {
             float yaw = plugin.getplayers().getInt(p.getName() + "warps." + args[0] + ".yaw");
             float pitch = plugin.getplayers().getInt(p.getName() + "warps." + args[0] + ".pitch");
             p.teleport(new Location(w, x, y, z, yaw, pitch));
-            p.sendMessage(ChatColor.GREEN + "Teleported to " + args[0] + "!");
+            p.sendMessage(ChatColor.GREEN + "Warped to " + args[0] + "!");
         }
         if (cmd.getName().equalsIgnoreCase("setwarp")) {
             if (!sender.hasPermission("ep.setwarp")) {

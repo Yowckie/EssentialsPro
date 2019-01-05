@@ -9,8 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class Gamemode
-implements CommandExecutor {
+public class Gamemode implements CommandExecutor {
     private Main plugin = Main.getPlugin(Main.class);
 
     public Gamemode(Main plugin) {

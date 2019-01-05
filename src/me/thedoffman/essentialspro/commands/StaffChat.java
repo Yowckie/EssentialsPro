@@ -22,7 +22,7 @@ implements CommandExecutor {
         String CE = plugin.getlang().getString("Messages.ConsoleE");
         CE = CE.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("staffchat")) {
-            if (!sender.hasPermission("ep.staffchat")) {
+            if (sender.hasPermission("ep.staffchat")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
@@ -33,7 +33,7 @@ implements CommandExecutor {
                 } else {
                     String message = Joiner.on((String)" ").join((Object[])args);
                     for (Player Player2 : Bukkit.getOnlinePlayers()) {
-                        if (!Player2.hasPermission("ep.staffchat")) continue;
+                        if (Player2.hasPermission("ep.staffchat")) continue;
                         Player2.sendMessage(ChatColor.GREEN + "[StaffChat] " + ChatColor.WHITE + " <" + ChatColor.BLUE + Player2.getName() + ChatColor.WHITE + "> " + ChatColor.GRAY + message);
                     }
                 }

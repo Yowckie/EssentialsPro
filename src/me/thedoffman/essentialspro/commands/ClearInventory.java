@@ -8,8 +8,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-public class ClearInventory
-implements CommandExecutor {
+public class ClearInventory implements CommandExecutor {
     private Main plugin = Main.getPlugin(Main.class);
 
     public ClearInventory(Main plugin) {
