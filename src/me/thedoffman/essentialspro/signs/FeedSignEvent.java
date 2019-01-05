@@ -22,9 +22,9 @@ public class FeedSignEvent implements Listener {
         public void onSignChange(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singfeed")){
                 if (e.getLine(0).equalsIgnoreCase("[Feed]")) {
-                        e.setLine(0, "[Feed]");
-                        e.setLine(1, "Click here");
-                        e.setLine(2, "to get Food!");
+                        e.setLine(0, ChatColor.BLUE+ChatColor.BOLD.toString() + "[Feed]");
+                        e.setLine(1, ChatColor.GREEN + "Click here");
+                        e.setLine(2, ChatColor.GREEN + "to get Food!");
                 }
         	}
         }

@@ -28,7 +28,7 @@ implements CommandExecutor {
             if (sender instanceof Player) {
                 Player p = (Player)sender;
                 String warps = "";
-                for (String s : this.plugin.getwarps().getConfigurationSection("warps").getKeys(false)) {
+                for (String s : plugin.getwarps().getConfigurationSection("warps").getKeys(false)) {
                     warps = warps + "\n" + s;
                 }
                 p.sendMessage(ChatColor.DARK_BLUE + "---- Here is the list of current warps---- " + ChatColor.DARK_GREEN + warps);

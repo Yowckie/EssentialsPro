@@ -21,8 +21,8 @@ public class TimeSignEvent implements Listener {
         public void onSignChangeDay(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singtime")){
                 if (e.getLine(0).equalsIgnoreCase("[Time]") && e.getLine(1).equalsIgnoreCase("Day")) {
-                        	e.setLine(0, "[Time]");
-                        	e.setLine(1, "Day");
+                        	e.setLine(0, ChatColor.BLUE+ChatColor.BOLD.toString() + "[Time]");
+                        	e.setLine(1, ChatColor.GREEN + "Day");
                         	e.getPlayer().sendMessage(ChatColor.BLUE + "Sign created for time " + ChatColor.GREEN + "DAY" + ChatColor.BLUE + "!");
                 }
         	}
@@ -45,8 +45,8 @@ public class TimeSignEvent implements Listener {
         public void onSignChangeNight(SignChangeEvent e) {
         	if(e.getPlayer().hasPermission("ep.singtime")){
                 if (e.getLine(0).equalsIgnoreCase("[Time]") && e.getLine(1).equalsIgnoreCase("Night")) {
-                        	e.setLine(0, "[Time]");
-                        	e.setLine(1, "Night");
+                        	e.setLine(0, ChatColor.BLUE+ChatColor.BOLD.toString() + "[Time]");
+                        	e.setLine(1, ChatColor.GREEN + "Night");
                         	e.getPlayer().sendMessage(ChatColor.BLUE + "Sign created for time " + ChatColor.GREEN + "NIGHT" + ChatColor.BLUE + "!");
                 }
         	}
