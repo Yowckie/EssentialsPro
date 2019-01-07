@@ -245,7 +245,7 @@ permissions:
     default: op
     description: Go invisable.
     
-  ep.warp:
+  ep.warp.:
     default: op
     description: Use the server warps.
     
