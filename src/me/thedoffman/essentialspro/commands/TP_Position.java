@@ -19,14 +19,16 @@ implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String CommandLabel, String[] arg) {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
-        Player player = (Player)sender;
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.prefix + ChatColor.RED + "Only players can perform this command!");
-        } else if (cmd.getName().equalsIgnoreCase("tpc") && player.isOp()) {
+        if (cmd.getName().equalsIgnoreCase("tpc")) {
             if (!sender.hasPermission("ep.tpc")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set a home!");
+                return true;
+            }
+            Player player = (Player)sender;
             if (arg.length < 3) {
                 player.sendMessage(plugin.prefix + ChatColor.RED + "Too few arguements. /tpc <x> <y> <z>");
             } else if (arg.length > 3) {
@@ -44,9 +46,7 @@ implements CommandExecutor {
                     player.sendMessage(plugin.prefix + ChatColor.RED + "The numbers may not have decimals!");
                 }
             }
-        } else {
-            player.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use this command");
-        }
+        } 
         return true;
     }
 }

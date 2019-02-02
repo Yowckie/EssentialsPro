@@ -17,26 +17,23 @@ public class Fly implements CommandExecutor {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can fly!");
-            return true;
-        }
-        Player player = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("fly")) {
-            if (!sender.hasPermission("ep.fly")) {
+            if (sender.hasPermission("ep.fly")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
-            }
-            if (!player.getAllowFlight()) {
+            }  
+            Player player = (Player) sender;
+            if (player.getAllowFlight()) {
                 player.setAllowFlight(true);
                 player.sendMessage(plugin.prefix + ChatColor.DARK_BLUE + "Flying " + ChatColor.GREEN + "Enabled" + ChatColor.DARK_BLUE + "!");
                 return true;
-            }
+            } 
             player.setAllowFlight(false);
             player.sendMessage(plugin.prefix + ChatColor.DARK_BLUE + "Flying " + ChatColor.RED + "Disabled" + ChatColor.DARK_BLUE + "!");
             return true;
-        }
+        } 
+        
         return true;
-    }
+    } 
 }
 

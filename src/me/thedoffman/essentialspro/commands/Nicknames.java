@@ -22,14 +22,14 @@ public class Nicknames implements CommandExecutor, Listener {
 
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.prefix + ChatColor.RED + "Only a ingame player can run that command!");
-            return true;
-        }
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("nickname")) {
-            if (!p.hasPermission("ep.nick.use")) {
+            if (p.hasPermission("ep.nick.use")) {
                 p.sendMessage(plugin.prefix + ChatColor.RED + "You do not have permission to use this command!");
+                return true;
+            }
+            if ((sender instanceof Player)) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can see inventories!");
                 return true;
             }
             if (args.length == 0) {

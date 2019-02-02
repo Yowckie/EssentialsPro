@@ -23,6 +23,11 @@ implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set a home!");
+                return true;
+            }
+
             String CE = plugin.getlang().getString("Messages.ConsoleE");
             CE = CE.replaceAll("&", "\u00A7");
             if (sender instanceof Player) {
@@ -32,12 +37,10 @@ implements CommandExecutor {
                     warps = warps + "\n" + s;
                 }
                 p.sendMessage(ChatColor.DARK_BLUE + "---- Here is the list of current warps---- " + ChatColor.DARK_GREEN + warps);
-            } else {
-                sender.sendMessage(plugin.prefix + CE);
+            } 
             }
-            return true;
-        }
-        return false;
+            return false;
+
     }
 }
 

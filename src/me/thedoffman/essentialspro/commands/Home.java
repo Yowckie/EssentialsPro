@@ -28,10 +28,6 @@ implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            if ((sender instanceof Player)) {
-                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can go home!");
-                return true;
-            }
             if (args.length == 0) {
                 p.sendMessage(plugin.prefix + ChatColor.RED + "Use: /home <Name>");
                 return true;
@@ -54,7 +50,7 @@ implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            if ((sender instanceof Player)) {
+            if (!(sender instanceof Player)) {
                 sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set a home!");
                 return true;
             }
@@ -76,7 +72,7 @@ implements CommandExecutor {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
-            if ((sender instanceof Player)) {
+            if (sender instanceof Player) {
                 sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can delete a home!");
                 return true;
             }

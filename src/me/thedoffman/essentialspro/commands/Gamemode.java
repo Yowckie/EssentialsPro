@@ -23,7 +23,7 @@ public class Gamemode implements CommandExecutor {
             return true;
         }
         if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Command use only in game.");
+            sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can set a gamemode!");
             return true;
         }
         Player player = (Player)sender;
@@ -51,9 +51,9 @@ public class Gamemode implements CommandExecutor {
             player.setGameMode(GameMode.SPECTATOR);
             player.sendMessage(plugin.prefix + ChatColor.BLUE + "GameMode set to" + ChatColor.GREEN + " Spectator");
             return true;
-        }
+        } 
         player.sendMessage(plugin.prefix + ChatColor.RED + "Usage: /gamemode [0:1:2:3]");
         return true;
-    }
+    } 
 }
 

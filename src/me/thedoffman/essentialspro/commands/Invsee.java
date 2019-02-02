@@ -20,13 +20,13 @@ implements CommandExecutor {
 
     @SuppressWarnings("deprecation")
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if (!(sender instanceof Player)) {
-            sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can see inventories!");
-            return true;
-        }
         if (cmd.getName().equalsIgnoreCase("invsee")) {
             if (!sender.hasPermission("ep.invsee")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
+                return true;
+            }
+            if (!(sender instanceof Player)) {
+                sender.sendMessage(plugin.prefix + ChatColor.RED + "Error: Only players can see inventories!");
                 return true;
             }
             Player p = (Player)sender;
