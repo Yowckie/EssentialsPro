@@ -1,7 +1,7 @@
 name: EssentialsPro
 author: TheDoffman
 main: me.thedoffman.essentialspro.main.Main
-version: 1.4.1
+version: 1.4.4
 description: Everything you need to run your server.
 
 commands:
@@ -201,15 +201,15 @@ permissions:
     default: op
     description: unmute a player.
 
-  ep.nickname.use:
-    default: true
+  ep.nick.use:
+    default: op
     description: Allows The Use Of /Nickname.
   
-  ep.nickname.others:
+  ep.nick.others:
     default: op
     description: Allows Nicknaming Other Players.
   
-  ep.nickname.color:
+  ep.nick.color:
     default: op
     description: Allows The use of color Codes In Nicknames.
     

@@ -24,7 +24,7 @@ implements CommandExecutor {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         Player p = (Player)sender;
         if (cmd.getName().equalsIgnoreCase("home")) {
-            if (sender.hasPermission("ep.home")) {
+            if (!sender.hasPermission("ep.home")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }
@@ -68,7 +68,7 @@ implements CommandExecutor {
             p.sendMessage(plugin.prefix + ChatColor.BLUE + "Home " + ChatColor.GREEN + args[0] + ChatColor.BLUE + " set!");
         }
         if (cmd.getName().equalsIgnoreCase("delhome")) {
-            if (sender.hasPermission("ep.deletehome")) {
+            if (!sender.hasPermission("ep.deletehome")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }

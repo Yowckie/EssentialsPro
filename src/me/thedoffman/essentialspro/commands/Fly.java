@@ -18,7 +18,7 @@ public class Fly implements CommandExecutor {
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
         plugin.prefix = plugin.prefix.replaceAll("&", "\u00A7");
         if (cmd.getName().equalsIgnoreCase("fly")) {
-            if (sender.hasPermission("ep.fly")) {
+            if (!sender.hasPermission("ep.fly")) {
                 sender.sendMessage(ChatColor.RED + "You do not have permission to use that command!");
                 return true;
             }  
