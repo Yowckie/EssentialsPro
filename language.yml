@@ -1,11 +1,7 @@
 # All Messages sent in the plugin can be changed here.
 Messages:
 # This is the message people see before joining your server.
-   MOTD: "&9This server is using &aEssentialsPro&9 \n&9Made by &aTheDoffman" 
-# Messages that people see when someone joins and leaves the server.
-   Join: "&9Welcome, %player%! This server is using &aEssentialsPro&9!"
-   JoinIG: "&a+ %player%"
-   LeaveIG: "&a- %player%"
+   MOTD: "&9Adventure time &aWith Luis and Nicole&9 \n&9Survival &not Creative" 
 # Message people see when they try a command they don't have access too.
    Access: "&4Error: You are not permitted to do this!"  
 # Message when you forget to type a players name.
